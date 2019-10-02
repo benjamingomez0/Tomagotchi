@@ -36,13 +36,14 @@ class Tomagotchi{
                 const roll = Math.floor(Math.random()*11);
                 if(roll>=10)
                 {
-                    $('.alert').text(`${this.name} is now nerdy!`)
-                    $('#sprite').attr("src","project evolved.svg");
-                }
-                elseg
-                {
-                    $('.alert').text(`${this.name} is now cool!`)
+                    $('.alert').text(`${this.name} is now nerdy!`);
                     $('#sprite').attr("src","project evolved ver2.svg");
+                }
+                else
+                {
+                    
+                    $('.alert').text(`${this.name} is now cool!`);
+                    $('#sprite').attr("src","project evolved.svg");
                 }
             }
         }
@@ -59,8 +60,12 @@ class Tomagotchi{
         die(){
             if(this.hunger>=10||this.boredom>=10||this.sleepiness>=10)
             {
-                this.isAlive= false;
-                $('.alert').text(`${this.name} has died!`)
+                if(this.isAlive===true)
+                {
+                    this.isAlive= false;
+                    $('.alert').text(`${this.name} has died!`)
+                    $('#sprite').attr("src","project dead.svg");
+                }
             }
         }
         bored(){
@@ -82,8 +87,7 @@ const game ={
     timer: function () {setInterval(()=>{
         this.time++;
         console.log(this.time);
-        console.log(this.t1.hunger,'<====hunger');
-        if(this.t1.isAlive===true)
+        if(this.t1.isAlive===true && this.t1.isAsleep==false)
         {
             if(this.time%10 === 0)
             {
@@ -110,7 +114,42 @@ const game ={
     },1000)
 }
 }
+
+
+
 game.timer();
 console.log(game.t1)
+
+$('#feed').on('click', () => {
+    if(game.t1.isAlive===true){
+    game.t1.eat();
+    }
+  });
+$('#play').on('click', () => {
+    if(game.t1.isAlive===true){
+    game.t1.amuse();
+    }
+  });
+  $('#sleep').on('click', () => {
+    if(game.t1.isAlive===true)
+    {
+        if(game.t1.isAsleep===false)
+        {
+            $('#sprite').attr("src","project sleep.svg");
+            $('#sleep').text("lights on!")
+            game.t1.sleep();
+            $('body').css('backgroundColor', '#456DA3' );
+            
+        }
+        else if(game.t1.isAsleep===true)
+        { 
+            $('#sprite').attr("src","project.svg");
+            $('#sleep').text("lights out!")
+            game.t1.wake();
+            $('body').css('backgroundColor', '#F5EC76' );
+            
+        }
+    }
+  });
 
 
