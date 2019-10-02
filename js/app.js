@@ -5,7 +5,7 @@ class Tomagotchi{
             this.age = 4;
             this.name = name;
             this.hunger = 0;
-            this.sleepiness = 0;
+            this.sleepiness = 1;
             this.boredom = 0;
             this.isAsleep = false;
             this.evolved = false;    
@@ -35,7 +35,7 @@ class Tomagotchi{
                 $('.alert').text(`${this.name} is changing!`)
                 this.evolved = true;
                 const roll = Math.floor(Math.random()*11);
-                if(roll>=10)
+                if(roll<=9)
                 {
                     $('.alert').text(`${this.name} is now nerdy!`);
                     $('#sprite').attr("src","project evolved ver2.svg");
@@ -85,23 +85,33 @@ class Tomagotchi{
 const game ={
     time:1,
     t1: new Tomagotchi(),
-    //newName: function(){t1.name = prompt('please enter the name of your pet: ')},
+    displayStats:function(){
+            $('#h').text(`hunger:${this.t1.hunger}`);
+            $('#b').text(`boredom:${this.t1.boredom}`);
+            $('#s').text(`sleepiness:${this.t1.sleepiness}`);
+            $('#a').text(`age:${this.t1.age}`);
+    },
+    newName: function(){this.t1.name = prompt('please enter the name of your pet: ')},
     timer: function () {setInterval(()=>{
         this.time++;
+        this.displayStats();
         console.log(this.time);
         if(this.t1.isAlive===true && this.t1.isAsleep==false)
         {
             if(this.time%10 === 0)
             {
                 this.t1.hungry();
+                
             }
             if(this.time%15 === 0){
                 this.t1.bored();
+                
             }
             if(this.time%25===0)
             {
                 this.t1.aged();
                 this.t1.sleepy();
+               
             }
             if(this.t1.hunger>=10||this.t1.boredom>=10||this.t1.sleepiness>=10)
             {
@@ -118,7 +128,7 @@ const game ={
 }
 
 
-
+game.newName();
 game.timer();
 game.t1.sleep();
 $('#sprite').attr("src","project sleep.svg");
@@ -174,3 +184,4 @@ $('#play').on('click', () => {
   });
 
 
+  

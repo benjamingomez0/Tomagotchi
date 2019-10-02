@@ -23,9 +23,27 @@ div button{
 img {
     display: block;
     margin: auto;
-    margin-top: 110px;
-    animation: mymove 9s infinite;
+    margin-top: 40px;
+    animation: lR 1s infinite;
+    /* animation: uD 1s infinite; */
+  animation-direction: alternate;
 }
+@keyframes lR {
+    0% {
+      transform: translate(0, 0);    
+    }
+    100% {
+      transform: translate(20px, 0px);
+    }
+  }
+  @keyframes uD {
+    0% {
+      transform: translate(0, 0);    
+    }
+    100% {
+      transform: translate(0px, 20px);
+    }
+  }
 
 .container {
     height: 50rem;
@@ -60,4 +78,11 @@ img {
     color:rgb(79, 74, 74);
     line-height: 2rem;
     font-size: 1rem;
+}
+.stat{
+    font-family: 'Press Start 2P', cursive;
+    color:rgb(79, 74, 74);
+    font-size: .5rem;
+    padding-left:10px;
+    padding-top: 5px;
 }
