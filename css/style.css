@@ -1,5 +1,6 @@
 body{
-    background-color: #F5EC76;
+    background-image: linear-gradient( #F5EC76 white);
+    
 }
 
 h1{
@@ -19,10 +20,16 @@ div button{
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
+img {
+    display: block;
+    margin: auto;
+    margin-top: 110px;
+    animation: mymove 9s infinite;
+}
 
 .container {
-    height: 60rem;
-    width: 55rem;
+    height: 50rem;
+    width: 45rem;
     /* border: 0.2rem solid black; */
     border-radius: .9rem;
     display: flex;

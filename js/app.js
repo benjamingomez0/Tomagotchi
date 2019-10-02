@@ -10,6 +10,7 @@ class Tomagotchi{
             this.isAsleep = false;
             this.evolved = false;    
             this.isAlive = true;
+            this.version=1;
         }
         amuse(){
             $('.alert').text(`${this.name} is horsing around!`)
@@ -38,12 +39,14 @@ class Tomagotchi{
                 {
                     $('.alert').text(`${this.name} is now nerdy!`);
                     $('#sprite').attr("src","project evolved ver2.svg");
+                    this.version=1;
                 }
                 else
                 {
                     
                     $('.alert').text(`${this.name} is now cool!`);
                     $('#sprite').attr("src","project evolved.svg");
+                    this.version=2;
                 }
             }
         }
@@ -78,7 +81,6 @@ class Tomagotchi{
         
 
 };
-
 
 const game ={
     time:1,
@@ -118,7 +120,10 @@ const game ={
 
 
 game.timer();
-console.log(game.t1)
+game.t1.sleep();
+$('#sprite').attr("src","project sleep.svg");
+$('#sleep').text("lights on!")
+$('body').css('backgroundColor', '#456DA3' );
 
 $('#feed').on('click', () => {
     if(game.t1.isAlive===true){
@@ -143,7 +148,23 @@ $('#play').on('click', () => {
         }
         else if(game.t1.isAsleep===true)
         { 
-            $('#sprite').attr("src","project.svg");
+            if(game.t1.evolved===true)
+            {
+                if(game.t1.version===1)
+                {
+                    $('#sprite').attr("src","project evolved ver2.svg");
+                }
+                else if(game.t1.version===2)
+                {
+                    $('#sprite').attr("src","project evolved.svg");
+                }
+                
+            }
+            else
+                {
+                    $('#sprite').attr("src","project.svg");
+                }
+            
             $('#sleep').text("lights out!")
             game.t1.wake();
             $('body').css('backgroundColor', '#F5EC76' );
