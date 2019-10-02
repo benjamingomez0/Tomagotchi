@@ -1,9 +1,17 @@
 console.log('coming in hot!')
 
 class Tomagotchi{
-        constructor(name='terri'){
+        constructor(name){
+            if(name===null||name==='')
+            {
+            this.name = "terri";
+            }
+            else
+            {
+                this.name = name;
+            }
+
             this.age = 4;
-            this.name = name;
             this.hunger = 0;
             this.sleepiness = 1;
             this.boredom = 0;
@@ -84,14 +92,14 @@ class Tomagotchi{
 
 const game ={
     time:1,
-    t1: new Tomagotchi(),
+    //newName: function(){return prompt('please enter the name of your pet: ')},
+    t1: new Tomagotchi(prompt('please enter the name of your pet: ')),
     displayStats:function(){
             $('#h').text(`hunger:${this.t1.hunger}`);
             $('#b').text(`boredom:${this.t1.boredom}`);
             $('#s').text(`sleepiness:${this.t1.sleepiness}`);
             $('#a').text(`age:${this.t1.age}`);
     },
-    newName: function(){this.t1.name = prompt('please enter the name of your pet: ')},
     timer: function () {setInterval(()=>{
         this.time++;
         this.displayStats();
@@ -128,7 +136,7 @@ const game ={
 }
 
 
-game.newName();
+
 game.timer();
 game.t1.sleep();
 $('#sprite').attr("src","project sleep.svg");
