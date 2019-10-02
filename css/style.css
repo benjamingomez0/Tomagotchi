@@ -9,8 +9,9 @@ h1{
 div button{
     flex-direction: row;
     font-family: monospace, cursive;
-    color:white;
-    background-color: rgb(252,209,42);
+    color:rgb(252,209,42);
+    background-color: #caffe8;
+    
     font-size: 16px;
     text-decoration: none;
     border: none;
@@ -51,4 +52,5 @@ div button{
     font-family: 'Press Start 2P', cursive;
     color:rgb(79, 74, 74);
     line-height: 2rem;
+    font-size: 1rem;
 }
