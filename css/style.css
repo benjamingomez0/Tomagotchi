@@ -24,26 +24,26 @@ img {
     display: block;
     margin: auto;
     margin-top: 40px;
-    animation: lR 1s infinite;
+    animation: LRUD 1s infinite;
     /* animation: uD 1s infinite; */
   animation-direction: alternate;
 }
-@keyframes lR {
+@keyframes LRUD {
+    
     0% {
-      transform: translate(0, 0);    
+        transform: translate(0, 0);   
     }
-    100% {
+    25% {
       transform: translate(20px, 0px);
     }
-  }
-  @keyframes uD {
-    0% {
-      transform: translate(0, 0);    
+    75% {
+        transform: translate(0px, 20px);
     }
     100% {
-      transform: translate(0px, 20px);
-    }
+        transform: translate(20px, 20px); 
+    } 
   }
+  
 
 .container {
     height: 50rem;
