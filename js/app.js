@@ -195,7 +195,7 @@ $('#play').on('click', () => {
     game.t1.amuse();
     }
   });
-  $('#sleep').on('click', () => {
+$('#sleep').on('click', () => {
     if(game.t1.isAlive===true)
     {
         if(game.t1.isAsleep===false)
