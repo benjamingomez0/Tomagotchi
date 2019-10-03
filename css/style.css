@@ -11,7 +11,7 @@ div button{
     flex-direction: row;
     font-family: 'Press Start 2P', cursive;
     color:rgb(252,209,42);
-    background-color: #caffe8;
+    background-color: #60cdb5;
     
     font-size: 12px;
     text-decoration: none;
@@ -64,7 +64,7 @@ div button{
     width:60%;
     height:60%;
     border-radius: .9rem;
-    background-color:#caffe8;
+    background-color:#60cdb5;
     margin: 50px 100px;
 }
 

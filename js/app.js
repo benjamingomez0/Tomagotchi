@@ -128,16 +128,16 @@ const game ={
         console.log(this.time);
         if(this.t1.isAlive===true && this.t1.isAsleep==false)
         {
-            if(this.time%11 === 0)
+            if(this.time%17 === 0)
             {
                 this.t1.hungry();
                 
             }
-            else if(this.time%17 === 0){
+            else if(this.time%19 === 0){
                 this.t1.bored();
                 
             }
-            else if(this.time%20 === 0)
+            else if(this.time%29 === 0)
             {
                 this.t1.sleepy();
                 this.t1.aged();
@@ -187,7 +187,7 @@ $('#feed').on('click', () => {
         {
             $('#sprite').attr("src","project.svg");
         }
-    },2000)
+    },1000)
     }
   });
 $('#play').on('click', () => {
