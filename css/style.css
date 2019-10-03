@@ -9,24 +9,23 @@ h1{
 }
 div button{
     flex-direction: row;
-    font-family: monospace, cursive;
+    font-family: 'Press Start 2P', cursive;
     color:rgb(252,209,42);
     background-color: #caffe8;
     
-    font-size: 16px;
+    font-size: 12px;
     text-decoration: none;
     border: none;
     border-radius:3px;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
 
-img {
+#sprite {
     display: block;
     margin: auto;
     margin-top: 40px;
     animation: LRUD 1s infinite;
-    /* animation: uD 1s infinite; */
-  animation-direction: alternate;
+  animation-direction: alternate-reverse;
 }
 @keyframes LRUD {
     
@@ -43,12 +42,17 @@ img {
         transform: translate(20px, 20px); 
     } 
   }
-  
 
+  
+#dead {
+    display: block;
+    margin: auto;
+    margin-top: 40px;
+   
+}
 .container {
     height: 50rem;
     width: 45rem;
-    /* border: 0.2rem solid black; */
     border-radius: .9rem;
     display: flex;
     flex-direction: column;

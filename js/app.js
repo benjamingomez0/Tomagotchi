@@ -11,7 +11,7 @@ class Tomagotchi{
                 this.name = name;
             }
 
-            this.age = 4;
+            this.age = 0;
             this.hunger = 0;
             this.sleepiness = 1;
             this.boredom = 0;
@@ -60,8 +60,7 @@ class Tomagotchi{
         }
         hungry(){
             $('.alert').text(`${this.name} is hungry!`)
-            // console.log($('#alert'));
-            // console.log(this.name);
+           
             this.hunger++;
         }
         sleepy(){
@@ -76,6 +75,9 @@ class Tomagotchi{
                     this.isAlive= false;
                     $('.alert').text(`${this.name} has died!`)
                     $('#sprite').attr("src","project dead.svg");
+                    $('#sprite').attr("id","dead");
+
+                    
                 }
             }
         }
@@ -92,12 +94,32 @@ class Tomagotchi{
 
 const game ={
     time:1,
-    //newName: function(){return prompt('please enter the name of your pet: ')},
     t1: new Tomagotchi(prompt('please enter the name of your pet: ')),
     displayStats:function(){
+        if(this.t1.hunger>=0)
+        {
             $('#h').text(`hunger:${this.t1.hunger}`);
+        }
+        else
+        {
+            $('#h').text('hunger:0')
+        }
+        if(this.t1.boredom>=0)
+        {
             $('#b').text(`boredom:${this.t1.boredom}`);
+        }
+        else
+        {
+            $('#b').text('boredom:0')
+        }
+        if(this.t1.sleepiness>=0)
+        {
             $('#s').text(`sleepiness:${this.t1.sleepiness}`);
+        }
+        else
+        {
+            $('#b').text('sleepiness:0')
+        }
             $('#a').text(`age:${this.t1.age}`);
     },
     timer: function () {setInterval(()=>{
@@ -106,26 +128,27 @@ const game ={
         console.log(this.time);
         if(this.t1.isAlive===true && this.t1.isAsleep==false)
         {
-            if(this.time%10 === 0)
+            if(this.time%11 === 0)
             {
                 this.t1.hungry();
                 
             }
-            if(this.time%15 === 0){
+            else if(this.time%17 === 0){
                 this.t1.bored();
                 
             }
-            if(this.time%25===0)
+            else if(this.time%20 === 0)
             {
-                this.t1.aged();
                 this.t1.sleepy();
+                this.t1.aged();
                
             }
-            if(this.t1.hunger>=10||this.t1.boredom>=10||this.t1.sleepiness>=10)
+            else if(this.t1.hunger>=10||this.t1.boredom>=10||this.t1.sleepiness>=10)
             {
                 this.t1.die();
             }
-            if(this.t1.age>=5)
+
+            else if(this.t1.age>=5)
             {
                 this.t1.evolve();
             }
@@ -144,12 +167,31 @@ $('#sleep').text("lights on!")
 $('body').css('backgroundColor', '#456DA3' );
 
 $('#feed').on('click', () => {
-    if(game.t1.isAlive===true){
+    if(game.t1.isAlive===true&&game.t1.isAsleep===false){
     game.t1.eat();
+    $('#sprite').attr("src","projectFood.svg");
+  
+    setTimeout( function (){
+        if(game.t1.evolved===true)
+        {
+            if(game.t1.version===1)
+            {
+                $('#sprite').attr("src","project evolved ver2.svg");
+            }
+            else
+            {
+                $('#sprite').attr("src","project evolved.svg");
+            }
+        }
+        else
+        {
+            $('#sprite').attr("src","project.svg");
+        }
+    },2000)
     }
   });
 $('#play').on('click', () => {
-    if(game.t1.isAlive===true){
+    if(game.t1.isAlive===true&&game.t1.isAsleep===false){
     game.t1.amuse();
     }
   });
