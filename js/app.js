@@ -21,20 +21,27 @@ class Tomagotchi{
             this.version=1;
         }
         amuse(){
+            
             $('.alert').text(`${this.name} is horsing around!`)
+            $('#sprite').css('animation', 'rotation 2s infinite');
+            setTimeout(function (){$('#sprite').css('animation', 'LRUD 2s infinite');},2000);
             this.boredom--;
+            
         }
         sleep(){
             $('.alert').text(`${this.name} is asleep!`)
             this.sleepiness--;
             this.isAsleep = true;
+            
         }
         wake(){
             $('.alert').text(`${this.name} is awake!`)
             this.isAsleep = false;
+           
         }
         eat(){
             $('.alert').text(`${this.name} is chowing down!`)
+           
             this.hunger--;
         }
         evolve(){
@@ -48,23 +55,27 @@ class Tomagotchi{
                     $('.alert').text(`${this.name} is now nerdy!`);
                     $('#sprite').attr("src","project evolved ver2.svg");
                     this.version=1;
+                   
                 }
                 else
                 {
                     
                     $('.alert').text(`${this.name} is now cool!`);
                     $('#sprite').attr("src","project evolved.svg");
+                    
                     this.version=2;
                 }
             }
         }
         hungry(){
             $('.alert').text(`${this.name} is hungry!`)
+            
            
             this.hunger++;
         }
         sleepy(){
             $('.alert').text(`${this.name} is tired!`)
+            
             this.sleepiness++;
         }
         die(){
@@ -74,6 +85,7 @@ class Tomagotchi{
                 {
                     this.isAlive= false;
                     $('.alert').text(`${this.name} has died!`)
+                    
                     $('#sprite').attr("src","project dead.svg");
                     $('#sprite').attr("id","dead");
 
