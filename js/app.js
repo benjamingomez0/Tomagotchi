@@ -24,7 +24,11 @@ class Tomagotchi{
             
             $('.alert').text(`${this.name} is horsing around!`)
             $('#sprite').css('animation', 'rotation 2s infinite');
-            setTimeout(function (){$('#sprite').css('animation', 'LRUD 2s infinite');},2000);
+            setTimeout(function (){
+                $('#sprite').css('animation', 'LRUD 2s infinite');
+                $('#sprite').css('animation-direction', 'alternate-reverse');
+        
+        },2000);
             this.boredom--;
             
         }
